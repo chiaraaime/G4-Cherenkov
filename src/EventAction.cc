@@ -110,6 +110,7 @@ void EventAction::EndOfEventAction(const G4Event* event)
 			analysisManager->FillNtupleDColumn(1, 3, hit->GetPos().z());
 			analysisManager->FillNtupleSColumn(1, 4, hit->GetProcessName());
 			analysisManager->FillNtupleDColumn(1, 5, hit->GetKinEne());
+			analysisManager->FillNtupleDColumn(1, 6, hit->GetTheta());
 			analysisManager->AddNtupleRow(1); 
 		}
 	}

@@ -107,7 +107,9 @@ G4bool OpticalSD::ProcessHits(G4Step* step,
   G4String processName = process ? process->GetProcessName() : "undefined";
   newHit->SetProcessName(processName);
  
-
+  //------------------theta
+  G4double theta = track->GetMomentumDirection().theta();
+  newHit->SetTheta(theta);
   fHitsCollection->insert(newHit);
   //Kill the optical photon
   track->SetTrackStatus(fStopAndKill);

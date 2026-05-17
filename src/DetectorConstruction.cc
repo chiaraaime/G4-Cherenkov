@@ -73,19 +73,18 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   //Per il radiatore 
   G4Material* rad_material = nullptr;
   G4cout << " >>>> [Detector] Configurazione materiale radiatore: " << fMaterialName << G4endl;
-  std::vector<G4double> photonEnergy = {1.5*eV, 2.0*eV, 3.0*eV, 4.0*eV, 5.0*eV, 6.0*eV};
+  std::vector<G4double> photonEnergy;
   std::vector<G4double> refractiveIndex;
   std::vector<G4double> adsorptionLength;
   G4MaterialPropertiesTable* mpt = new G4MaterialPropertiesTable();
   
   if(fMaterialName == "MgF2"){
      rad_material = nistManager->FindOrBuildMaterial("G4_MAGNESIUM_FLUORIDE");
-     refractiveIndex = {1.37, 1.38, 1.38, 1.39, 1.40, 1.42};
+     photonEnergy = {0.25*eV, 0.5*eV, 1.0*eV, 1.5*eV, 2.0*eV, 2.5*eV, 3.0*eV, 3.5*eV, 4.0*eV, 4.5*eV, 5.0*eV, 6.25*eV, 6.75*eV, 7.0*eV, 7.25*eV, 7.9*eV, 8.2*eV, 8.5*eV, 9.0*eV};
+     refractiveIndex = {1.342, 1.366, 1.372, 1.375, 1.377, 1.380, 1.383, 1.387, 1.392, 1.397, 1.405, 1.423, 1.434, 1.440, 1.447, 1.465, 1.476, 1.489, 1.503};
      // https://refractiveindex.info/?shelf=main&book=MgF2&page=Li-o
-     adsorptionLength = {50.0*m, 50.0*m, 50.0*m, 50.0*m, 50.0*m, 50.0*m};
-
-    
-     
+     // https://www.crystran.com/optical-materials/magnesium-fluoride-mgf2/
+     adsorptionLength = {10.0*m, 10.0*m, 10.0*m, 10.0*m, 10.0*m, 10.0*m, 10.0*m, 10.0*m, 10.0*m, 10.0*m, 10.0*m, 46.25*cm, 15.25*cm, 9.05*cm, 7.50*cm, 5.56*cm, 3.32*cm, 2.06*cm, 1.85*cm};
    }
    
    else if (fMaterialName == "PbF2"){
@@ -95,10 +94,10 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
      rad_material = new G4Material("LeadFluoride", density, 2);
      rad_material->AddElement(elPb,1);
      rad_material->AddElement(elF, 2);
-     
-     refractiveIndex = {1.73, 1.73, 1.72, 1.72, 1.71, 1.70};
-     // https://refractiveindex.info/?shelf=main&book=MgF2&page=Li-o
-     adsorptionLength = {20.0*m, 20.0*m, 20.0*m, 20.0*m, 20.0*m, 20.0*m};
+     photonEnergy = {0.25*eV, 0.51*eV, 1.02*eV, 1.53*eV, 2.05*eV, 2.47*eV, 3.08*eV, 3.57*eV, 3.70*eV, 3.84*eV, 3.98*eV, 4.13*eV, 4.43*eV, 4.59*eV, 4.96*eV, 5.17*eV};
+     refractiveIndex = {1.709, 1.727, 1.737, 1.748, 1.764, 1.782, 1.817, 1.857, 1.871, 1.887, 1.908, 1.937, 1.937, 1.937, 1.937, 1.937};
+     //  https://www.crystran.com/optical-materials/lead-fluoride-pbf2/ costante dopo che arriva al limite
+     adsorptionLength = {10.0*m, 10.0*m, 10.0*m, 39.50*cm, 26.16*cm, 15.49*cm, 12.83*cm, 7.49*cm, 6.00*cm, 5.00*cm, 3.00*cm, 2.67*cm, 2.13*cm, 1.02*cm, 0.36*cm, 0.0*cm};
      
   }
   

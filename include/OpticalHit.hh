@@ -61,6 +61,7 @@ public:
   void SetKinEne(G4double ke)		{ fKinEne  = ke;	}
   void SetPos(G4ThreeVector position) 	{ fPos     = position; 	}
   void SetProcessName(G4String name) 	{ fProcess = name; 	}
+  void SetTheta(G4double th)		{ fTheta   = th;	}
 
   
   // define here getter methods	 
@@ -68,6 +69,7 @@ public:
   G4double	GetKinEne()	 const { return fKinEne; }
   G4ThreeVector GetPos()	 const { return fPos;	 }
   G4String	GetProcessName() const { return fProcess;}
+  G4double	GetTheta()	 const { return fTheta;	 }
 
   
 private:
@@ -76,6 +78,7 @@ private:
   G4double	 fKinEne = 0;
   G4ThreeVector  fPos;    
   G4String	 fProcess;
+  G4double    	 fTheta = -99999;
 };
 
 typedef G4THitsCollection<OpticalHit> OpticalHitsCollection;

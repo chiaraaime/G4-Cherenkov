@@ -75,6 +75,7 @@ RunAction::RunAction()
   analysisManager->CreateNtupleDColumn("zPos");
   analysisManager->CreateNtupleSColumn("Process");
   analysisManager->CreateNtupleDColumn("KineticEnergy");
+  analysisManager->CreateNtupleDColumn("Theta");
   
   analysisManager->FinishNtuple();
   // Creating histograms and ntuples
