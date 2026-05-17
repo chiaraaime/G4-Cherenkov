@@ -40,8 +40,8 @@ class G4GenericMessenger; //Chiara to pass the material
 namespace RUT
 {
 
-class DetectorConstruction : public G4VUserDetectorConstruction
-{
+  class DetectorConstruction : public G4VUserDetectorConstruction
+  {
   public:
     DetectorConstruction();
     ~DetectorConstruction() override;
@@ -52,7 +52,8 @@ class DetectorConstruction : public G4VUserDetectorConstruction
   private: //Chiara to pass the material
     G4GenericMessenger* fMessenger;
     G4String       	fMaterialName;
-};
+    G4double            fThickness;
+  };
 
 }
 
